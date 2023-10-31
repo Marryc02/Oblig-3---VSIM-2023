@@ -68,7 +68,7 @@ public class PointcloudScript : MonoBehaviour
 
             // The value is "600" because we only want to show every 600th line (or point) in the .txt-document as there are
             // way too many of them otherwise. (Unity crashed on me several times)
-            if (a >= 600)
+            if (a >= 1)
             {
                 // Makes a new list of strings with the name "pointValues".
                 // Assigns the inputText .txt-document as the value of the List, however it also splits each line in the .txt-document
@@ -96,7 +96,7 @@ public class PointcloudScript : MonoBehaviour
                 fPointValues.Clear();
                 
                 // Creates a new output-string that will act as a new line on the outputText-file. This time with the right x, y, z order.
-                string outputString = pointValues[0] + " " + pointValues[2] + " " + pointValues[1];
+                string outputString = pointValues[0] + " " + pointValues[1] + " " + pointValues[2];
 
                 using (StreamWriter writeFile = File.AppendText(outputText))
                 {
