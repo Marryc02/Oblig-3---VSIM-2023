@@ -27,28 +27,40 @@ public class RenderScript : MonoBehaviour
 
         List<Vector3> points = new List<Vector3>();
 
+        // Pass the file path and file name to the StreamReader constructor
         StreamReader read = new StreamReader(terrainFile);
 
         string line;
 
         for (int i = 0; i < pointsCount; i++)
         {   
+            // Read the first line of text
             line = read.ReadLine();
+            // Makes a new list of strings with the name "pointValues".
+            // Assigns the inputText .txt-document as the value of the List, however it also splits each line in the .txt-document
+            // in such a way that the document writes a new line with everything that comes after a space in the .txt-document all while
+            // deleting empty spaces in the .txt-document.
+            // Lastly it converts the document to a List as it is technically just a really long string with a format.
             List<String> pointValues = line.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList<string>();
             
+            // Checks that there is actually three float values to put in the vector that is generated below.
+            // It has the added benefit of outright ignoring the very first line in the .txt-file, 
+            // that simply states how many lines are in the document in total.
             if (pointValues.Count() != 3)
             {
                 continue;
             }
+
             Vector3 p = new Vector3(float.Parse(pointValues[0]),
                                     float.Parse(pointValues[1]),
                                     float.Parse(pointValues[2]));
+
             points.Add(p);
             Debug.Log(p);
         }
 
         /*
-        Code below obtained form Unity's documentation on RenderPrimitives
+        Code below obtained from Unity's documentation on RenderPrimitives
         https://docs.unity3d.com/ScriptReference/Graphics.RenderPrimitives.html
         */
         meshTriangles = new GraphicsBuffer(GraphicsBuffer.Target.Structured, mesh.triangles.Length, sizeof(int));

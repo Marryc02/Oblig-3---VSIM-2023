@@ -20,8 +20,8 @@ public class PointcloudScript : MonoBehaviour
 {
     [SerializeField] bool bDataGenerated = true;
 
-    string inputText = @"Assets/input.txt";
-    string outputText = @"Assets/output.txt";
+    string inputText = @"Assets/merged.txt";
+    string outputText = @"Assets/terrain.txt";
 
 
     // Runs before Start().
@@ -66,9 +66,9 @@ public class PointcloudScript : MonoBehaviour
             // Read the first line of text
             line = readFile.ReadLine();
 
-            // The value is "500" because we only want to show every 500th (or point) in the .txt-document as there are
-            // way too many of the otherwise. (Unity crashed on me several times)
-            if (a >= 500)
+            // The value is "600" because we only want to show every 600th line (or point) in the .txt-document as there are
+            // way too many of them otherwise. (Unity crashed on me several times)
+            if (a >= 600)
             {
                 // Makes a new list of strings with the name "pointValues".
                 // Assigns the inputText .txt-document as the value of the List, however it also splits each line in the .txt-document
