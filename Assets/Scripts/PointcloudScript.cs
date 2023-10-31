@@ -84,7 +84,7 @@ public class PointcloudScript : MonoBehaviour
                 // closer to the scenes' origin.
                 List<float> fPointValues = new List<float>();
                 fPointValues.Add(float.Parse(pointValues[0], CultureInfo.InvariantCulture.NumberFormat) - 608000.0f);
-                fPointValues.Add(float.Parse(pointValues[2], CultureInfo.InvariantCulture.NumberFormat));
+                fPointValues.Add(float.Parse(pointValues[2], CultureInfo.InvariantCulture.NumberFormat) - 200.0f);
                 fPointValues.Add(float.Parse(pointValues[1], CultureInfo.InvariantCulture.NumberFormat) - 6643000.0f);
 
                 // Converts the points back into strings.
